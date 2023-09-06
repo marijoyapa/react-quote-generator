@@ -1,5 +1,7 @@
 
-// import logo from './logo.svg';
+import tumbler from './tumblr.svg';
+import twitter from './twitter.svg';
+import { ReactComponent as MyIcon } from './tumblr.svg';
 import './App.css';
 import React from 'react';
 
@@ -85,8 +87,9 @@ class App extends React.Component {
 					<p style={Author} id='author'>- {this.state.author}</p>
 					<div style={Buttons}>
 						<div style={Share}>
-							{/* <button style={But1}><FontAwesomeIcon icon={faTwitter}/><a id='tweet-quote'>Twit</a></button>
-							<button style={But1}><a id='tweet-quote'>Tumbler</a></button> */}
+						
+							<img style={But1} src={twitter}/>
+							{/* <button style={But1}><img src={twitter} alt="logo" /><a id='tweet-quote'>Twit</a></button> */}
 						</div>
 						<div style={NewQuote}>
 							<button style={But2} id='new-quote' onClick={this.fetchAdvice}>New quote</button>
