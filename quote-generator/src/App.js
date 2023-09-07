@@ -1,7 +1,7 @@
+import { ReactComponent as Tumbler } from './tumblr.svg';
+import { ReactComponent as Twitter } from './twitter.svg';
+import { ReactComponent as Quotation } from './quote.svg';
 
-import tumbler from './tumblr.svg';
-import twitter from './twitter.svg';
-import { ReactComponent as MyIcon } from './tumblr.svg';
 import './App.css';
 import React from 'react';
 
@@ -54,7 +54,7 @@ class App extends React.Component {
 		this.fetchAdvice();
 	}
 	fetchAdvice() {
-		var random = Math.floor(Math.random() * (4 - 0 + 1)) + 0
+		var random = Math.floor(Math.random() * this.state.quoteArray.length);
 		this.setState({
 			quote: this.state.quoteArray[random].qoute,
 			author: this.state.quoteArray[random].author,
@@ -64,14 +64,14 @@ class App extends React.Component {
 
 
 	render() {
-		const Container = { justifyContent: "center", alignItems: "center", backgroundColor: "white", textAlign: 'center', width: "540px", padding: "20px 40px", borderRadius: "7px" }
+		const Container = { justifyContent: "center", alignItems: "center", backgroundColor: "white", textAlign: 'center', width: "480px", padding: "20px 30px 40px 40px", borderRadius: "7px" }
 		const Author = { justifyContent: "center", textAlign: 'right', fontSize: "20px", color: this.state.color }
-		const NewQuote = { marginLeft: "auto", fontSize: "15px", backgroundColor: this.state.color }
-		const Quote = { fontSize: "28px", color: this.state.color }
+		const NewQuote = { marginLeft: "auto", fontSize: "15px", backgroundColor: this.state.color, borderRadius: "2px", height: "35px", width: "90px", alignItems: "center", }
+		const Quote = { fontSize: "24px", color: this.state.color }
 		const Buttons = { display: "flex", justifyContent: "space-between", alignItems: "center" }
-		const Share = { display: "flex", fontSize: "15px", backgroundColor: this.state.color }
-		const But1 = {  backgroundColor: this.state.color, fontSize: "13px" , padding: "6px", border: "none", borderRadius: "4px", color: "white"}
-		const But2 = { backgroundColor: this.state.color, fontSize: "13px" , padding: "6px", border: "none", borderRadius: "4px", color: "white"}
+		const Share = { display: "flex", backgroundColor: "white", gap: "6px" }
+		const But1 = { display: "flex", justifyContent: "center", backgroundColor: this.state.color, fontSize: "13px", padding: "8px", border: "none", borderRadius: "2px", color: "white", width: "20px", height: "20px" }
+		const But2 = { backgroundColor: this.state.color, fontSize: "13px", padding: "6px", border: "none", borderRadius: "4px", color: "white", marginTop: "3px" }
 
 		const Wrapper = {
 			display: "flex",
@@ -83,13 +83,12 @@ class App extends React.Component {
 		return (
 			<div style={Wrapper} id='quote-box'>
 				<div style={Container}>
-					<p style={Quote} id='text'>{this.state.quote}</p>
+					<p style={Quote} id='text'><i><Quotation height={30} fill={this.state.color} /></i><strong> {this.state.quote}</strong></p>
 					<p style={Author} id='author'>- {this.state.author}</p>
 					<div style={Buttons}>
 						<div style={Share}>
-						
-							<img style={But1} src={twitter}/>
-							{/* <button style={But1}><img src={twitter} alt="logo" /><a id='tweet-quote'>Twit</a></button> */}
+							<a href="https://twitter.com/" target="_blank"><i style={But1}><Twitter fill="white" height={20} /></i></a>
+							<a href="https://www.tumblr.com/" target="_blank"><i style={But1}><Tumbler fill="white" /></i></a>
 						</div>
 						<div style={NewQuote}>
 							<button style={But2} id='new-quote' onClick={this.fetchAdvice}>New quote</button>
@@ -103,9 +102,4 @@ class App extends React.Component {
 }
 
 
-
-/**
- * What is the use of using constructor props and super props
- * what do you mean when you declare a constant with curly braces e.g. const {quote}
- */
 export default App;
